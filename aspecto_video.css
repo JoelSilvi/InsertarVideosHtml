@@ -4,5 +4,31 @@
     background-color: #fc3;
     padding: 5px;
     border: 2px solid lime;
-    border-radius: 8px;
+    border-radius: 8px 2px;
+}
+
+nav{
+    margin: 5px 0;
+}
+
+#botones{
+    float: left;
+    width: 100px;
+    height: 20px;
+}
+
+#barra{
+    background-color: white;
+    width: 600px;
+    height: 16px;
+    border: 1px solid gray;
+    padding: 3px;
+    margin-left: 80px;
+}
+
+#progreso{
+    position: absolute;
+    width: 0;
+    height: 16px;
+    background:rgba(0, 0, 150, 2);
 }
