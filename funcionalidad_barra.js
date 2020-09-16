@@ -1,4 +1,6 @@
-var mivideo, reproducir, barra, progreso;
+var mivideo, reproducir, barra, progreso, maximo;
+
+maximo=600;
 
 function comenzar(){
     mivideo=document.getElementById("mivideo");
@@ -8,7 +10,7 @@ function comenzar(){
 
     reproducir.addEventListener("click",clicando,false);
 
-    progreso.addEventListener("click",adelantando,false);
+    barra.addEventListener("click",adelantando,false);
 }
 
 
@@ -21,7 +23,33 @@ function clicando(){
     }else{
         mivideo.play();
         reproducir.innerHTML="Pause";
+        setInterval(estado,30);
     }
+}
+
+function estado(){
+
+    if (mivideo.ended==false){
+
+        var total=parseInt(mivideo.currentTime*maximo/mivideo.duration);
+        progreso.style.width=total+"px";
+        
+    }
+}
+
+function adelantando(posicion){
+
+    if ((mivideo.paused==false) && (mivideo.ended==false)){
+
+        var ratonX=posicion.pageX-barra.offsetLeft;
+
+        var nuevoTiempo=ratonX*mivideo.duration/maximo;
+
+        mivideo.currentTime=nuevoTiempo;
+
+        progreso.style.width=ratonX+"px";
+    }
+
 }
 
 window.addEventListener("load",comenzar,false);
